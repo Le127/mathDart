@@ -11,12 +11,12 @@ String mathChallenge(String str) {
   try {
     for (var i = 0; i <= 9; i++) {
       //replace "x" with a number
-      final replaceX = copyStr.replaceAll(RegExp("x"), i.toString());
+      final String replaceX = copyStr.replaceAll(RegExp("x"), i.toString());
 
       //separate formula from the equals sign
-      final splitEqual = replaceX.split("=");
-      final afterEqualSign = int.parse(splitEqual[1]);
-      final beforeEqualSign = splitEqual[0];
+      final List<String> splitEqual = replaceX.split("=");
+      final int afterEqualSign = int.parse(splitEqual[1]);
+      final String beforeEqualSign = splitEqual[0];
 
       //evaluates the formula before the equals sign
       Parser p = Parser();
