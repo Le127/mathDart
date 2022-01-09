@@ -1,7 +1,7 @@
 import 'package:math_expressions/math_expressions.dart';
 
 void main() {
-  print(mathChallenge('4-2=x'));
+  print(mathChallenge('1x - 6 = 4'));
 }
 
 String mathChallenge(String str) {
@@ -18,21 +18,24 @@ String mathChallenge(String str) {
       final afterEqualSign = int.parse(splitEqual[1]);
       final beforeEqualSign = splitEqual[0];
 
+      //evaluates the formula before the equals sign
       Parser p = Parser();
       double evaluateBeforeEqualSign = p.parse(beforeEqualSign).evaluate(
             EvaluationType.REAL,
             ContextModel(),
           );
-
+        
       if (evaluateBeforeEqualSign == afterEqualSign) {
-        missingDigit = i.toString();
+        return missingDigit = i.toString();
       }
     }
+     //If it found equality between evaluateBeforeEqualSign and afterEqualSign it returns i, otherwise "ERROR"
     if (missingDigit.isNotEmpty) {
       return missingDigit;
     }
   } catch (e) {
     return missingDigit = "ERROR";
   }
+
   return missingDigit;
 }
